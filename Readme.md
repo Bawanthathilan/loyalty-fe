@@ -13,7 +13,9 @@ cd loyalty-fe
 npm install
 ```
 
-## Start the development servwr
+## Start the development server
+```bash
 npm run dev
+```
 
 
