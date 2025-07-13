@@ -8,7 +8,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 import EarnPoints from './components/Earn/EarnPoints';
 import RedeemPoints from './components/Redeem/RedeemPoints';
 import TransactionHistory from './components/History/TransactionHistory';
-import ProtectedRoute from './components/ProtectedRoute';
 import { useAuth } from './contexts/AuthContext';
 
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {

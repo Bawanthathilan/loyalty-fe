@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Gift, Star, Check, AlertCircle } from 'lucide-react';
 import { mockRewards } from '../../data/mockData';
 import { Reward } from '../../types';
-import { useAuth } from '../../contexts/AuthContext';
 import {loyaltyAPI} from '../../services/api'
 
 const RedeemPoints: React.FC = () => {
-  const { user } = useAuth();
   const [userPoints] = useState(1250);
   const [processing, setProcessing] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -21,24 +19,20 @@ const RedeemPoints: React.FC = () => {
     : mockRewards.filter(r => r.category === selectedCategory);
 
   const handleRedeem = async (reward: Reward) => {
-    if (userPoints < reward.points_required) {
-      setError(`Insufficient points. You need ${reward.points_required - userPoints} more points.`);
-      setTimeout(() => setError(null), 3000);
-      return;
-    }
+    if (processing || success) return;
 
     setProcessing(reward.id);
+    setError(null);
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      const response = await loyaltyAPI.redeemPoints(reward.id);
       setSuccess(reward.id);
-      setTimeout(() => setSuccess(null), 3000);
-    } catch (error) {
-      console.error('Failed to redeem reward:', error);
-      setError('Failed to redeem reward. Please try again.');
-      setTimeout(() => setError(null), 3000);
-    } finally {
+      setProcessing(null);
+      // Optionally, update balance or other state here
+      console.log('Redeem success:', response);
+    } catch (err) {
+      console.error('Redeem failed:', err);
+      setError('Already redeemed this reward');
       setProcessing(null);
     }
   };
@@ -49,7 +43,6 @@ const RedeemPoints: React.FC = () => {
     const fetchBalance = async () => {
       try {
         const balance = await loyaltyAPI.getBalance();
-        console.log("Fetched balance:", balance);
         setBalance(balance.response.balance);
       } catch (error) {
         console.error('Failed to fetch balance:', error);

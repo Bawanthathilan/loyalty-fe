@@ -53,7 +53,7 @@ export const mockProducts: Product[] = [
 
 export const mockRewards: Reward[] = [
   {
-    id: 'r1',
+    id: '5d0de7d6-5305-339b-9d00-1edfd342639c',
     name: 'Free Coffee',
     description: 'Any coffee of your choice',
     points_required: 200,
@@ -62,7 +62,7 @@ export const mockRewards: Reward[] = [
     availability: 50
   },
   {
-    id: 'r2',
+    id: '696d35e3-fb2c-3c74-8339-a30eec422881',
     name: '10% Discount',
     description: '10% off your next purchase',
     points_required: 150,
@@ -71,7 +71,7 @@ export const mockRewards: Reward[] = [
     availability: 100
   },
   {
-    id: 'r3',
+    id: 'cabf2817-99a2-3208-bbf0-82406c01db65',
     name: 'Free Meal',
     description: 'Complete meal of your choice',
     points_required: 500,
@@ -79,22 +79,4 @@ export const mockRewards: Reward[] = [
     image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
     availability: 25
   },
-  {
-    id: 'r4',
-    name: 'VIP Access',
-    description: 'Skip the line with VIP treatment',
-    points_required: 300,
-    category: 'Premium',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
-    availability: 10
-  },
-  {
-    id: 'r5',
-    name: 'Gift Card $25',
-    description: '$25 gift card for future purchases',
-    points_required: 1000,
-    category: 'Gift Cards',
-    image: 'https://images.pexels.com/photos/6963098/pexels-photo-6963098.jpeg?auto=compress&cs=tinysrgb&w=400',
-    availability: 15
-  }
 ];

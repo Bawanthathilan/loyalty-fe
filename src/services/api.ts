@@ -58,11 +58,11 @@ export const loyaltyAPI = {
     return response.data;
   },
 
-  redeemPoints: async (rewardId: string, accountId: string) => {
-    const response = await api.post(`/loyalty/rewards/${rewardId}/redeem`, {
-      account_id: accountId,
-    });
+  redeemPoints: async (rewardId: string) => {
+    const response = await api.post(`/loyalty/rewards/${rewardId}/redeem`);
     return response.data;
+
+
   },
 
   getBalance: async (): Promise<Balance> => {
